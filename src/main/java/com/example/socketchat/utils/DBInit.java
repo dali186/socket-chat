@@ -19,8 +19,38 @@ public class DBInit {
     @Bean
     CommandLineRunner initDB(MemberRepository memberRepository){
         return args -> {
-            Member member = Member.builder()
-                    .username("member")
+            Member member1 = Member.builder()
+                    .username("member1")
+                    .password(passwordEncoder.encode("1234"))
+                    .role("user")
+                    .build();
+
+            Member member2 = Member.builder()
+                    .username("member2")
+                    .password(passwordEncoder.encode("1234"))
+                    .role("user")
+                    .build();
+
+            Member member3 = Member.builder()
+                    .username("member3")
+                    .password(passwordEncoder.encode("1234"))
+                    .role("user")
+                    .build();
+
+            Member member4 = Member.builder()
+                    .username("member4")
+                    .password(passwordEncoder.encode("1234"))
+                    .role("user")
+                    .build();
+
+            Member member5 = Member.builder()
+                    .username("member5")
+                    .password(passwordEncoder.encode("1234"))
+                    .role("user")
+                    .build();
+
+            Member member6 = Member.builder()
+                    .username("member6")
                     .password(passwordEncoder.encode("1234"))
                     .role("user")
                     .build();
@@ -31,7 +61,7 @@ public class DBInit {
                     .role("admin")
                     .build();
 
-            memberRepository.saveAll(Arrays.asList(member, admin));
+            memberRepository.saveAll(Arrays.asList(member1, member2, member3, member4, member5, member6, admin));
         };
     }
 }
