@@ -1,6 +1,5 @@
 package com.example.socketchat.user;
 
-import com.example.socketchat.chat.ChatRoom;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

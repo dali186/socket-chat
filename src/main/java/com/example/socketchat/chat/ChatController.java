@@ -1,24 +1,22 @@
 package com.example.socketchat.chat;
 
+import com.example.socketchat.chat.chatroom.ChatRoomService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.List;
-
+@Controller
 @RequiredArgsConstructor
-@RestController
 public class ChatController {
-    private final ChatService chatService;
 
-    @PostMapping("/chat")
-    public ChatRoom createRoom(@RequestBody String name) {
-        return chatService.createRoom(name);
-    }
+    private final ChatRoomService chatRoomService;
 
-    @GetMapping("/chat/room")
-    public String findAllRoom(Model model) {
-        model.addAttribute("rooms", chatService.findAllRoom());
-        return "/chatroom";
+    @GetMapping("/chatroom/{roomId}")
+    public String enterChatRoom(@PathVariable Long roomId, Model model) {
+        model.addAttribute("roomChats", chatRoomService.getChatMessages(roomId));
+
+        return "chatroom";
     }
 }
